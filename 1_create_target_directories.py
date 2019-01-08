@@ -16,7 +16,7 @@ if args.region == str('repeats'):
     region_type = 'repeats'
 
 
-# SPECIFYING DIRECTORIES FOR (i) ROOT, (ii) TEMPLATE TARGET & (iii) CHROMOSOME INPUT DATA
+# SPECIFYING DIRECTORIES FOR (i) ROOT, (ii) TEMPLATE TARGET & (iii) TARGETS INPUT DATA
 
 root = '/fastdata/bo4mhe'
 template_dir = '{}/template'.format(root)
@@ -25,7 +25,7 @@ regions_input_dir = '{}/target_regions/{}'.format(root, region_type)
 
 # SPECIFYING & CREATING TOP OUTPUT DIRECTORY
 
-window_dir = '{}/indiv_{}_regions'.format(root, region_type)
+window_dir = '{}/individual_{}_regions'.format(root, region_type)
 regions_output_dir = '{}/regions'.format(window_dir)
 
 if not os.path.isdir(window_dir):
