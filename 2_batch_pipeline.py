@@ -24,8 +24,8 @@ if args.stage == int(5):
 if args.stage == int(6):
     preparation_stage = '6-baseml'
 
-# SPECIFYING SIZE OF TARGET i.e. floating window (10kb, 25kb, 50kb, 100kb) or individual (ASHCE)
 
+# SPECIFYING SIZE OF TARGET i.e. floating window (50kb) or individual (ASHCE)
 
 if args.window == str('50kb'):
     window_size = '50kb_targets'
@@ -33,7 +33,7 @@ if args.window == str('ASHCE'):
     window_size = 'individual_ASHCE_regions'
 
 
-# QSUB FEED LOOP FOR CONTINUOUSLY SUBMITTING JOBS ON SHARC HPCC (FINAL STEP)
+# FUNCTION: QSUB FEED LOOP FOR CONTINUOUSLY SUBMITTING JOBS ON SHARC HPCC (FINAL STEP)
 
 def qsub_queue(cmd, job_limit):
     check_qstat_cmd = 'qstat | grep -c "chr"'
@@ -65,6 +65,7 @@ if not os.path.isdir(output_dir):
     os.mkdir(output_dir)
 if not os.path.isdir('{}/out_&_error'.format(output_dir)):
     os.mkdir('{}/out_&_error'.format(output_dir))
+
 
 # LISTING ALL/SPECIFIC CHROMOSOME DIRECTORIES
 
@@ -217,7 +218,7 @@ for chr_dir in sorted_chr_dir_list:
             pipe_sublist_script.write('\t\tos.chdir("{}/4baseml_free".format(current_tar_dir))\n')
             pipe_sublist_script.write('\t\tsubprocess.call("baseml", shell=True)\n')
 
-        # PRINTING PROGRESS SUMMARY TO OUT
+        # WRITING PROGRESS SUMMARY TO OUT
         pipe_sublist_script.write('\tend_time = subprocess.check_output("date", shell=True).decode("utf-8").rstrip("\\n")\n')
         pipe_sublist_script.write('\tprint("{} processed | {} of {} targets processed in total | {}".format(tar_dir, str(counter), str(sublist_len), end_time))\n')
         pipe_sublist_script.write('\tsys.stdout.flush()\n')
