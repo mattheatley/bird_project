@@ -1,6 +1,8 @@
 # bird_project
+
 Exploring the influence of non-coding regions on evolutionary phenotypic diversity in birds
-See Yusuf et al, 2020: https://genome.cshlp.org/content/early/2020/03/19/gr.255752.119
+
+See Yusuf et al, 2020 for context (https://genome.cshlp.org/content/early/2020/03/19/gr.255752.119)
 
 Chromosome alignments files produced by henryjuho are either complete or split into several parts depending on size. 
 The ASCHE region coordinates (265,984 in total) for corresponding chromosome files are found in target_regions/ASHCE.
